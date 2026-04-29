@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Javascript</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #1b1717;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #8d2121;
+        }
+        .modal-add {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #1b1717;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .modal-add form {
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-add input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>CRUD Operations</h2>
+        <div class="head">
+            <button class="addUser">Add</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First_name</th>
+                    <th>Last_name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="data-table">
+                <!-- Data will be dynamically inserted here -->
+                 <!-- Sample Data -->
+                <tr>
+                    <td>1</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>
+                        <button onclick="editItem(1)">Edit</button>
+                        <button onclick="deleteItem(1)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    <!-- Modal for add-->
+     <div class="modal-add">
+        <form action="" method="POST">
+            <input type="text" name="first_name" placeholder="First Name">
+            <input type="text" name="last_name" placeholder="Last Name">
+            <button class="submitData">Submit</button>
+        </form>
+     </div>
+     
+    <!-- edit modal -->
+    <div class="modal-edit">
+        <form action="" method="POST">
+            <input type="text" name="edit_first_name" placeholder="First Name">
+            <input type="text" name="edit_last_name" placeholder="Last Name">
+            <button class="updateData">Update</button>
+        </form>
+    </div>
+
+    </div>
+
+    <script>
+        const submitData = document.querySelector('.submitData'),
+            dataTable = document.getElementById('data-table');
+
+
+            submitData.addEventListener('click', (e) => {
+                e.preventDefault();
+                submitUsers();
+            });
+
+               let users = [];
+            // save localstorage
+            const savedUsers = localStorage.getItem('users');
+            if (savedUsers) {
+                users = JSON.parse(savedUsers);
+            }else{
+                users = [
+                { id: 1, first_name: 'John', last_name: 'Doe' },
+                { id: 2, first_name: 'Jane', last_name: 'Smith' }
+            ];
+            }
+
+         
+            function submitUsers() {
+                // Implementation for submitting users
+                console.log('Submitting users...');
+                // Add your submission logic here
+                const firstName = document.querySelector('input[name="first_name"]').value.trim();
+                const lastName = document.querySelector('input[name="last_name"]').value.trim();
+
+                
+                if(firstName === '' || lastName === ''){
+                    alert('Please fill in all fields');
+                    return;
+                }
+
+                const exists = users.some(user => 
+                    user.first_name === firstName && user.last_name === lastName
+                );
+
+                if (exists) {
+                    alert('User already exists');
+                    return;
+                }
+                const newUser = {
+                    id: users.length + 1,
+                    first_name: firstName,
+                    last_name: lastName
+                };
+                users.push(newUser);
+                renderTable();
+                // Save to localStoragem
+                localStorage.setItem('users', JSON.stringify(users));
+                firstName.value = '';
+                lastName.value = ''; 
+                   
+            }
+
+            function renderTable() {
+                dataTable.innerHTML = '';
+                users.forEach((user, i) => {
+                    const row = `
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.first_name}</td>
+                            <td>${user.last_name}</td>
+                            <td>
+                                <button class="editBtn">Edit</button>
+                                <button class="deleteBtn">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                    dataTable.innerHTML += row;
+                });
+                document.querySelectorAll('.deleteBtn').forEach((deleteButton, i)=>{
+                    deleteButton.addEventListener('click', () =>{
+                        users.splice(i, 1)
+                        localStorage.setItem('users', JSON.stringify(users))
+                        renderTable();
+                    })
+                })
+                document.querySelectorAll('.editBtn').forEach((editButton, i) => {
+                    editButton.addEventListener('click', () => {
+                        const user = users[i];
+                        const editFirstName = document.querySelector('input[name="edit_first_name"]');
+                        const editLastName = document.querySelector('input[name="edit_last_name"]');
+                        editFirstName.value = user.first_name;
+                        editLastName.value = user.last_name;
+
+                        const updateData = document.querySelector('.updateData');
+                        updateData.onclick = (e) => {
+                            e.preventDefault();
+                            if(editFirstName.value.trim() === '' || editLastName.value.trim() === ''){
+                                alert('Please fill in all fields');
+                                return;
+                            }
+                            user.first_name = editFirstName.value.trim();
+                            user.last_name = editLastName.value.trim();
+                            editFirstName.value = '';
+                            editLastName.value = '';
+                            localStorage.setItem('users', JSON.stringify(users));
+                            renderTable();
+                        }
+                    });
+                });
+            }
+            renderTable();
+    </script>
+</body>
+</html>

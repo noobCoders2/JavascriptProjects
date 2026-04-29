@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.932);
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.todo-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.todo-container .todo-app{
+    width: 550px;
+    background: rgba(9, 9, 10, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+
+}
+.todo-app h1{
+    margin: 10px;
+}
+.todo-main{
+    width: 100%;
+}
+.todo-app .todo-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.todo-input .input{
+    width: 100%;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.input input[name="todo"]{
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    letter-spacing: 1px;
+    border: none;
+}
+.todo-input .addBtn button{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(12, 12, 216);
+    color: white;
+    transition: .3s;
+}
+.addBtn button:hover{
+    transform: translateY(-2px);
+}
+.addBtn button:active{
+    transform: scale(.9);
+}
+.result{
+    margin: 10px 0;
+}
+.todo-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.todo-list p{
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.todo-list .todo-action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.todo-action .Edit{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(166, 17, 212);
+    color: white;
+    transition: .3s;
+}
+.todo-action .Delete{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(173, 16, 5);
+    color: white;
+    transition: .3s;
+}
+.Edit:hover,
+.Delete:hover{
+    transform: translateY(-2px);
+}
+.Edit:active,
+.Delete:active{
+    transform: scale(.9);
+}

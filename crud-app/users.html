@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - CRUD App UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle sidebar">
+        <label class="hamburger" for="nav-toggle" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <label class="nav-scrim" for="nav-toggle" aria-label="Close sidebar"></label>
+
+        <aside class="sidebar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">C</span>
+                <span>CRUD App</span>
+            </a>
+
+            <nav class="side-nav" aria-label="Main navigation">
+                <a href="index.html">Dashboard</a>
+                <a class="active" href="users.html">Users</a>
+                <a href="reports.html">Reports</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+
+            <a class="sidebar-add" href="#add-user-modal">Add User</a>
+        </aside>
+
+        <main class="app-shell">
+            <header class="page-header">
+                <div>
+                    <p class="eyebrow">People</p>
+                    <h1>Users</h1>
+                    <p class="hero-text">Keep names, roles, and account status easy to scan before you connect your JavaScript logic.</p>
+                </div>
+                <a class="primary-action" href="#add-user-modal">Add User</a>
+            </header>
+
+            <section class="profile-grid" aria-label="User profiles">
+                <article class="profile-card">
+                    <div class="profile-top">
+                        <span class="avatar large">JD</span>
+                        <span class="status active">Active</span>
+                    </div>
+                    <h2>John Doe</h2>
+                    <p>Frontend learner</p>
+                    <dl>
+                        <div>
+                            <dt>Email</dt>
+                            <dd>john@example.com</dd>
+                        </div>
+                        <div>
+                            <dt>Role</dt>
+                            <dd>Student</dd>
+                        </div>
+                    </dl>
+                    <div class="actions">
+                        <button type="button">Edit</button>
+                        <button class="danger" type="button">Delete</button>
+                    </div>
+                </article>
+
+                <article class="profile-card">
+                    <div class="profile-top">
+                        <span class="avatar large">JS</span>
+                        <span class="status pending">Pending</span>
+                    </div>
+                    <h2>Jane Smith</h2>
+                    <p>Project member</p>
+                    <dl>
+                        <div>
+                            <dt>Email</dt>
+                            <dd>jane@example.com</dd>
+                        </div>
+                        <div>
+                            <dt>Role</dt>
+                            <dd>Reviewer</dd>
+                        </div>
+                    </dl>
+                    <div class="actions">
+                        <button type="button">Edit</button>
+                        <button class="danger" type="button">Delete</button>
+                    </div>
+                </article>
+
+                <article class="profile-card">
+                    <div class="profile-top">
+                        <span class="avatar large">AM</span>
+                        <span class="status inactive">Inactive</span>
+                    </div>
+                    <h2>Alex Morgan</h2>
+                    <p>Archived account</p>
+                    <dl>
+                        <div>
+                            <dt>Email</dt>
+                            <dd>alex@example.com</dd>
+                        </div>
+                        <div>
+                            <dt>Role</dt>
+                            <dd>Guest</dd>
+                        </div>
+                    </dl>
+                    <div class="actions">
+                        <button type="button">Edit</button>
+                        <button class="danger" type="button">Delete</button>
+                    </div>
+                </article>
+            </section>
+
+            <section class="table-panel" aria-labelledby="directory-title">
+                <div class="table-header">
+                    <div class="section-heading">
+                        <p class="eyebrow">Directory</p>
+                        <h2 id="directory-title">User list</h2>
+                    </div>
+                    <div class="table-tools">
+                        <input type="search" placeholder="Search by name">
+                        <button type="button">Filter</button>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Name">John Doe</td>
+                                <td data-label="Email">john@example.com</td>
+                                <td data-label="Role">Student</td>
+                                <td data-label="Status"><span class="status active">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Name">Jane Smith</td>
+                                <td data-label="Email">jane@example.com</td>
+                                <td data-label="Role">Reviewer</td>
+                                <td data-label="Status"><span class="status pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Name">Alex Morgan</td>
+                                <td data-label="Email">alex@example.com</td>
+                                <td data-label="Role">Guest</td>
+                                <td data-label="Status"><span class="status inactive">Inactive</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="add-user-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <a class="modal-backdrop" href="#" aria-label="Close modal"></a>
+        <form class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">Create</p>
+                    <h2 id="modal-title">Add new user</h2>
+                </div>
+                <a class="close-button" href="#" aria-label="Close modal">x</a>
+            </div>
+
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Enter first name">
+
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Enter last name">
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com">
+
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                <option>Active</option>
+                <option>Pending</option>
+                <option>Inactive</option>
+            </select>
+
+            <div class="modal-actions">
+                <a class="cancel-button" href="#">Cancel</a>
+                <button class="submit-button" type="submit">Save User</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

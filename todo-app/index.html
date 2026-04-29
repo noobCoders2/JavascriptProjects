@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="todo-container">
+        <div class="todo-app">
+            <h1>Todo Application</h1>
+
+            <div class="todo-main">
+                <div class="todo-input">
+                    <div class="input">
+                        <input type="text" name="todo" placeholder="todo something....">
+                    </div>
+                    <div class="addBtn">
+                        <button class="addTodo">Add</button>
+                    </div>
+                    
+                </div>
+
+                <!-- todo list -->
+                <div class="result">
+                    <!-- 
+                    <div class="todo-list">
+                        <p>baking something</p>
+                        <div class="todo-action">
+                            <button class="Edit">Edit</button>
+                            <button class="Delete">Delete</button>
+                        </div>
+                    </div> -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const addTodo =  document.querySelector('.addTodo');
+        addTodo.addEventListener('click', () => {
+            todoAdd();
+        })
+
+        let todos = [{todolist: 'I Love You'},
+            {todolist: 'I Hate You'}
+        ];
+
+        function renderTodoList(){
+            let htmlList = "";
+            todos.forEach((todoIt)=>{
+                const htmltodo = `
+                    <div class="todo-list">
+                        <p>${todoIt.todolist}</p>
+                        <div class="todo-action">
+                            <button class="Edit">Edit</button>
+                            <button class="Delete">Delete</button>
+                        </div>
+                    </div>
+                `;
+                htmlList  += htmltodo;
+            });
+            document.querySelector(".result").innerHTML  = htmlList;
+
+        }
+
+        function todoAdd() {
+            const inputTodo = document.querySelector('.input input[name="todo"]');
+            const todoInput = inputTodo.value.trim();
+            if(todoInput === ''){
+                alert("please provide todo");
+                return;
+            }
+            const newTodo = {todolist: todoInput}
+
+            todos.push(newTodo)
+            inputTodo.value = "";
+            renderTodoList();
+        }
+
+        
+        renderTodoList();
+    </script>
+</body>
+</html>

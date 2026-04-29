@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD App UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle sidebar">
+        <label class="hamburger" for="nav-toggle" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <label class="nav-scrim" for="nav-toggle" aria-label="Close sidebar"></label>
+
+        <aside class="sidebar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">C</span>
+                <span>CRUD App</span>
+            </a>
+
+            <nav class="side-nav" aria-label="Main navigation">
+                <a class="active" href="index.html">Dashboard</a>
+                <a href="users.html">Users</a>
+                <a href="reports.html">Reports</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+
+            <a class="sidebar-add" href="#add-user-modal">Add User</a>
+        </aside>
+
+        <main class="app-shell">
+            <section class="hero">
+                <div>
+                    <p class="eyebrow">User management</p>
+                    <h1>CRUD Dashboard</h1>
+                    <p class="hero-text">Practice creating, reading, updating, and deleting users with a clean interface ready for your JavaScript.</p>
+                </div>
+
+                <a class="primary-action" href="#add-user-modal">Add User</a>
+            </section>
+
+            <section class="stats-grid" aria-label="User stats">
+                <article class="stat-card">
+                    <span class="stat-label">Total Users</span>
+                    <strong>24</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Active</span>
+                    <strong>18</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Pending</span>
+                    <strong>6</strong>
+                </article>
+            </section>
+
+            <section class="table-panel" aria-labelledby="users-title">
+                <div class="table-header">
+                    <div class="section-heading">
+                        <p class="eyebrow">Records</p>
+                        <h2 id="users-title">Users</h2>
+                    </div>
+
+                    <div class="table-tools">
+                        <input type="search" placeholder="Search users">
+                        <button type="button">Filter</button>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="ID">001</td>
+                                <td data-label="Name">
+                                    <div class="user-cell">
+                                        <span class="avatar">JD</span>
+                                        <span>John Doe</span>
+                                    </div>
+                                </td>
+                                <td data-label="Email">john@example.com</td>
+                                <td data-label="Status"><span class="status active">Active</span></td>
+                                <td data-label="Actions">
+                                    <div class="actions">
+                                        <button type="button">Edit</button>
+                                        <button class="danger" type="button">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="ID">002</td>
+                                <td data-label="Name">
+                                    <div class="user-cell">
+                                        <span class="avatar">JS</span>
+                                        <span>Jane Smith</span>
+                                    </div>
+                                </td>
+                                <td data-label="Email">jane@example.com</td>
+                                <td data-label="Status"><span class="status pending">Pending</span></td>
+                                <td data-label="Actions">
+                                    <div class="actions">
+                                        <button type="button">Edit</button>
+                                        <button class="danger" type="button">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="ID">003</td>
+                                <td data-label="Name">
+                                    <div class="user-cell">
+                                        <span class="avatar">AM</span>
+                                        <span>Alex Morgan</span>
+                                    </div>
+                                </td>
+                                <td data-label="Email">alex@example.com</td>
+                                <td data-label="Status"><span class="status inactive">Inactive</span></td>
+                                <td data-label="Actions">
+                                    <div class="actions">
+                                        <button type="button">Edit</button>
+                                        <button class="danger" type="button">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="add-user-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <a class="modal-backdrop" href="#" aria-label="Close modal"></a>
+        <form class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">Create</p>
+                    <h2 id="modal-title">Add new user</h2>
+                </div>
+                <a class="close-button" href="#" aria-label="Close modal">x</a>
+            </div>
+
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Enter first name">
+
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Enter last name">
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com">
+
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                <option>Active</option>
+                <option>Pending</option>
+                <option>Inactive</option>
+            </select>
+
+            <div class="modal-actions">
+                <a class="cancel-button" href="#">Cancel</a>
+                <button class="submit-button" type="submit">Save User</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

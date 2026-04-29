@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - CRUD App UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle sidebar">
+        <label class="hamburger" for="nav-toggle" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <label class="nav-scrim" for="nav-toggle" aria-label="Close sidebar"></label>
+
+        <aside class="sidebar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">C</span>
+                <span>CRUD App</span>
+            </a>
+
+            <nav class="side-nav" aria-label="Main navigation">
+                <a href="index.html">Dashboard</a>
+                <a href="users.html">Users</a>
+                <a href="reports.html">Reports</a>
+                <a class="active" href="settings.html">Settings</a>
+            </nav>
+
+            <a class="sidebar-add" href="#add-user-modal">Add User</a>
+        </aside>
+
+        <main class="app-shell">
+            <header class="page-header">
+                <div>
+                    <p class="eyebrow">Preferences</p>
+                    <h1>Settings</h1>
+                    <p class="hero-text">Static controls you can later connect to local storage, validation, and update functions.</p>
+                </div>
+                <button class="ghost-button" type="button">Reset</button>
+            </header>
+
+            <section class="settings-grid">
+                <form class="settings-card">
+                    <div class="section-heading">
+                        <p class="eyebrow">Profile</p>
+                        <h2>Account details</h2>
+                    </div>
+
+                    <label for="app-name">App name</label>
+                    <input type="text" id="app-name" value="CRUD App">
+
+                    <label for="owner-name">Owner name</label>
+                    <input type="text" id="owner-name" value="Caber">
+
+                    <label for="owner-email">Email</label>
+                    <input type="email" id="owner-email" value="caber@example.com">
+
+                    <button class="submit-button" type="submit">Save Changes</button>
+                </form>
+
+                <section class="settings-card" aria-labelledby="preferences-title">
+                    <div class="section-heading">
+                        <p class="eyebrow">Display</p>
+                        <h2 id="preferences-title">Table preferences</h2>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Show avatars</strong>
+                            <span>Display initials beside user names.</span>
+                        </div>
+                        <input type="checkbox" checked>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Compact rows</strong>
+                            <span>Use tighter spacing for large tables.</span>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Email alerts</strong>
+                            <span>Notify when a record is changed.</span>
+                        </div>
+                        <input type="checkbox" checked>
+                    </div>
+                </section>
+            </section>
+
+            <section class="settings-card full-width" aria-labelledby="danger-title">
+                <div class="section-heading">
+                    <p class="eyebrow">Data</p>
+                    <h2 id="danger-title">Learning actions</h2>
+                </div>
+
+                <div class="danger-zone">
+                    <div>
+                        <strong>Clear sample records</strong>
+                        <span>This button is only UI for now. Add JavaScript later when you are ready.</span>
+                    </div>
+                    <button class="danger-solid" type="button">Clear Data</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="add-user-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <a class="modal-backdrop" href="#" aria-label="Close modal"></a>
+        <form class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">Create</p>
+                    <h2 id="modal-title">Add new user</h2>
+                </div>
+                <a class="close-button" href="#" aria-label="Close modal">x</a>
+            </div>
+
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Enter first name">
+
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Enter last name">
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com">
+
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                <option>Active</option>
+                <option>Pending</option>
+                <option>Inactive</option>
+            </select>
+
+            <div class="modal-actions">
+                <a class="cancel-button" href="#">Cancel</a>
+                <button class="submit-button" type="submit">Save User</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

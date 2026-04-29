@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - CRUD App UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle sidebar">
+        <label class="hamburger" for="nav-toggle" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <label class="nav-scrim" for="nav-toggle" aria-label="Close sidebar"></label>
+
+        <aside class="sidebar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">C</span>
+                <span>CRUD App</span>
+            </a>
+
+            <nav class="side-nav" aria-label="Main navigation">
+                <a href="index.html">Dashboard</a>
+                <a href="users.html">Users</a>
+                <a class="active" href="reports.html">Reports</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+
+            <a class="sidebar-add" href="#add-user-modal">Add User</a>
+        </aside>
+
+        <main class="app-shell">
+            <header class="page-header">
+                <div>
+                    <p class="eyebrow">Insights</p>
+                    <h1>Reports</h1>
+                    <p class="hero-text">A simple reporting view for totals, recent activity, and small visual summaries.</p>
+                </div>
+                <button class="ghost-button" type="button">Export</button>
+            </header>
+
+            <section class="stats-grid" aria-label="Report summary">
+                <article class="stat-card">
+                    <span class="stat-label">New This Week</span>
+                    <strong>8</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Updated Records</span>
+                    <strong>15</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Deleted Records</span>
+                    <strong>3</strong>
+                </article>
+            </section>
+
+            <section class="report-grid">
+                <article class="report-card">
+                    <div class="section-heading">
+                        <p class="eyebrow">Activity</p>
+                        <h2>User growth</h2>
+                    </div>
+                    <div class="bar-chart" aria-label="Static user growth chart">
+                        <span style="height: 42%"></span>
+                        <span style="height: 58%"></span>
+                        <span style="height: 48%"></span>
+                        <span style="height: 74%"></span>
+                        <span style="height: 66%"></span>
+                        <span style="height: 88%"></span>
+                    </div>
+                </article>
+
+                <article class="report-card">
+                    <div class="section-heading">
+                        <p class="eyebrow">Notes</p>
+                        <h2>Recent changes</h2>
+                    </div>
+                    <ul class="activity-list">
+                        <li>
+                            <strong>Jane Smith</strong>
+                            <span>Status changed to pending</span>
+                        </li>
+                        <li>
+                            <strong>John Doe</strong>
+                            <span>Email verified</span>
+                        </li>
+                        <li>
+                            <strong>Alex Morgan</strong>
+                            <span>Account moved to inactive</span>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="table-panel" aria-labelledby="report-table-title">
+                <div class="table-header">
+                    <div class="section-heading">
+                        <p class="eyebrow">Log</p>
+                        <h2 id="report-table-title">CRUD activity</h2>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Action</th>
+                                <th>User</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Date">Apr 29</td>
+                                <td data-label="Action">Create</td>
+                                <td data-label="User">John Doe</td>
+                                <td data-label="Result"><span class="status active">Saved</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Date">Apr 28</td>
+                                <td data-label="Action">Update</td>
+                                <td data-label="User">Jane Smith</td>
+                                <td data-label="Result"><span class="status pending">Reviewed</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Date">Apr 27</td>
+                                <td data-label="Action">Delete</td>
+                                <td data-label="User">Old Record</td>
+                                <td data-label="Result"><span class="status inactive">Removed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="add-user-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <a class="modal-backdrop" href="#" aria-label="Close modal"></a>
+        <form class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">Create</p>
+                    <h2 id="modal-title">Add new user</h2>
+                </div>
+                <a class="close-button" href="#" aria-label="Close modal">x</a>
+            </div>
+
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Enter first name">
+
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Enter last name">
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com">
+
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                <option>Active</option>
+                <option>Pending</option>
+                <option>Inactive</option>
+            </select>
+
+            <div class="modal-actions">
+                <a class="cancel-button" href="#">Cancel</a>
+                <button class="submit-button" type="submit">Save User</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Task - Todo App UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="single-screen">
+    <section class="phone">
+      <header class="top-nav">
+        <a href="index.html">Cancel</a>
+        <h2>Add New Task</h2>
+        <a href="index.html">Save</a>
+      </header>
+
+      <form class="form-ui">
+        <input class="title-input" type="text" placeholder="What do you want to do?">
+        <div class="field-row"><span class="field-icon blue">▣</span><b>Category</b><em>Work</em><span>›</span></div>
+        <div class="field-row"><span class="field-icon gray">□</span><b>Due Date</b><em>May 25, 2024</em><span>›</span></div>
+        <div class="field-row"><span class="field-icon gray">◷</span><b>Time</b><em>10:00 AM</em><i class="switch"></i></div>
+        <div class="field-row"><span class="field-icon orange">⌁</span><b>Priority</b><em>Medium <small class="priority-dot"></small></em></div>
+        <div class="field-row"><span class="field-icon gray">♧</span><b>Reminder</b><em>None</em><span>›</span></div>
+        <label class="notes-field">
+          <span>▤ Notes</span>
+          <textarea placeholder="Add notes..."></textarea>
+        </label>
+        <div class="category-pills">
+          <span class="blue">▣</span><span class="green">▣</span><span class="orange">▣</span><span class="purple">▣</span><span class="pink">▣</span>
+        </div>
+      </form>
+
+      <div class="keyboard">
+        <div>Q W E R T Y U I O P</div>
+        <div>A S D F G H J K L</div>
+        <div>⇧ Z X C V B N M ⌫</div>
+        <div><span>123</span><strong>space</strong><span>return</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Stop Watch
+        </h1>
+        <div class="wrapper">
+            <div class="result">00:00:00:00</div>
+            <div class="buttons">
+                <button id="start">Start</button>
+                <button id="stop">Stop</button>
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const startBtn = document.getElementById('start'),
+            stopBtn = document.getElementById('stop'),
+            resetBtn = document.getElementById('reset'),
+            result = document.querySelector('.result');
+
+        let hours = 0,
+            minutes = 0,
+            seconds = 0,
+            milliseconds = 0,
+            interval;
+
+        startBtn.addEventListener('click', start);
+        stopBtn.addEventListener('click', stop);
+        resetBtn.addEventListener('click', reset);
+
+        function start(){
+            clearInterval(interval);
+            interval = setInterval(run, 10);
+        }
+
+        function stop(){
+            clearInterval(interval);
+        }
+
+        function reset(){
+            clearInterval(interval);
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+            milliseconds = 0;
+            result.textContent = "00:00:00:00";
+        }
+
+        function run(){
+            milliseconds++;
+            if(milliseconds >= 100){
+                milliseconds = 0;
+                seconds++;
+            }
+            if(seconds >= 60){
+                seconds = 0;
+                minutes++;
+            }
+            if(minutes >= 60){
+                minutes = 0;
+                hours++;
+            }
+            result.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>

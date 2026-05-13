@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tip Calculator</h1>
+        <div class="input-group">
+            <label for="billAmount">Bill Amount:</label>
+            <input type="number" id="billAmount" placeholder="Enter bill amount">
+        </div>
+        <div class="input-group">
+            <label for="tipPercentage">Tip Percentage:</label>
+            <input type="number" id="tipPercentage" placeholder="Enter tip percentage">
+        </div>
+        <button id="calculateBtn">Calculate Tip</button>
+        <div id="result">Tip: ₱0.00 | Total: ₱0.00</div>
+    </div>
+    <script>
+        const calculateBtn  = document.getElementById('calculateBtn'),
+            inputs = document.querySelectorAll("input[type='number']"),
+            results = document.getElementById("result");
+
+        calculateBtn.addEventListener('click', calculate);
+
+        function calculate(){
+            let billAmount = Number(inputs[0].value);
+            let tipPercentage = Number(inputs[1].value);
+
+            let tipAmount = billAmount * (tipPercentage / 100);
+            let totalAmount = billAmount + tipAmount;
+
+
+            results.textContent = `Tip: ₱${tipAmount.toFixed(2)} | Total: ₱${totalAmount.toFixed(2)}`;
+            
+            inputs[0].value = "";
+            inputs[1].value = "";
+
+        }
+    </script>
+</body>
+</html>

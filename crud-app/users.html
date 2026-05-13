@@ -29,7 +29,7 @@
                 <a href="settings.html">Settings</a>
             </nav>
 
-            <a class="sidebar-add" href="#add-user-modal">Add User</a>
+            
         </aside>
 
         <main class="app-shell">
@@ -39,90 +39,35 @@
                     <h1>Users</h1>
                     <p class="hero-text">Keep names, roles, and account status easy to scan before you connect your JavaScript logic.</p>
                 </div>
-                <a class="primary-action" href="#add-user-modal">Add User</a>
+                <a class="primary-action add-user">Add User</a>
             </header>
 
             <section class="profile-grid" aria-label="User profiles">
-                <article class="profile-card">
-                    <div class="profile-top">
-                        <span class="avatar large">JD</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <h2>John Doe</h2>
-                    <p>Frontend learner</p>
-                    <dl>
-                        <div>
-                            <dt>Email</dt>
-                            <dd>john@example.com</dd>
-                        </div>
-                        <div>
-                            <dt>Role</dt>
-                            <dd>Student</dd>
-                        </div>
-                    </dl>
-                    <div class="actions">
-                        <button type="button">Edit</button>
-                        <button class="danger" type="button">Delete</button>
-                    </div>
-                </article>
-
-                <article class="profile-card">
-                    <div class="profile-top">
-                        <span class="avatar large">JS</span>
-                        <span class="status pending">Pending</span>
-                    </div>
-                    <h2>Jane Smith</h2>
-                    <p>Project member</p>
-                    <dl>
-                        <div>
-                            <dt>Email</dt>
-                            <dd>jane@example.com</dd>
-                        </div>
-                        <div>
-                            <dt>Role</dt>
-                            <dd>Reviewer</dd>
-                        </div>
-                    </dl>
-                    <div class="actions">
-                        <button type="button">Edit</button>
-                        <button class="danger" type="button">Delete</button>
-                    </div>
-                </article>
-
-                <article class="profile-card">
-                    <div class="profile-top">
-                        <span class="avatar large">AM</span>
-                        <span class="status inactive">Inactive</span>
-                    </div>
-                    <h2>Alex Morgan</h2>
-                    <p>Archived account</p>
-                    <dl>
-                        <div>
-                            <dt>Email</dt>
-                            <dd>alex@example.com</dd>
-                        </div>
-                        <div>
-                            <dt>Role</dt>
-                            <dd>Guest</dd>
-                        </div>
-                    </dl>
-                    <div class="actions">
-                        <button type="button">Edit</button>
-                        <button class="danger" type="button">Delete</button>
-                    </div>
-                </article>
+                <!-- display data -->
             </section>
 
             <section class="table-panel" aria-labelledby="directory-title">
                 <div class="table-header">
+
                     <div class="section-heading">
                         <p class="eyebrow">Directory</p>
                         <h2 id="directory-title">User list</h2>
                     </div>
+
                     <div class="table-tools">
                         <input type="search" placeholder="Search by name">
-                        <button type="button">Filter</button>
+                        <select id="filter-role">
+                            <option value="">All Roles</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                        </select>
+                        <select id="filter-status">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
                     </div>
+
                 </div>
 
                 <div class="table-wrap">
@@ -135,25 +80,8 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Name">John Doe</td>
-                                <td data-label="Email">john@example.com</td>
-                                <td data-label="Role">Student</td>
-                                <td data-label="Status"><span class="status active">Active</span></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Name">Jane Smith</td>
-                                <td data-label="Email">jane@example.com</td>
-                                <td data-label="Role">Reviewer</td>
-                                <td data-label="Status"><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Name">Alex Morgan</td>
-                                <td data-label="Email">alex@example.com</td>
-                                <td data-label="Role">Guest</td>
-                                <td data-label="Status"><span class="status inactive">Inactive</span></td>
-                            </tr>
+                        <tbody class="renderData">
+                            <!-- display data -->
                         </tbody>
                     </table>
                 </div>
@@ -181,11 +109,18 @@
             <label for="email">Email address</label>
             <input type="email" id="email" name="email" placeholder="name@example.com">
 
+            <label for="status">Role</label>
+            <select id="role" name="Role">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="human">Human</option>
+            </select>
+
             <label for="status">Status</label>
             <select id="status" name="status">
-                <option>Active</option>
-                <option>Pending</option>
-                <option>Inactive</option>
+                <option value="active">Active</option>
+                <option value="pending">Pending</option>
+                <option value="inactive">Inactive</option>
             </select>
 
             <div class="modal-actions">
@@ -194,5 +129,6 @@
             </div>
         </form>
     </div>
+    <script type="module" src="js/script.js"></script>
 </body>
 </html>

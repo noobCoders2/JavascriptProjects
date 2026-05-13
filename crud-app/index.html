@@ -29,7 +29,6 @@
                 <a href="settings.html">Settings</a>
             </nav>
 
-            <a class="sidebar-add" href="#add-user-modal">Add User</a>
         </aside>
 
         <main class="app-shell">
@@ -44,18 +43,7 @@
             </section>
 
             <section class="stats-grid" aria-label="User stats">
-                <article class="stat-card">
-                    <span class="stat-label">Total Users</span>
-                    <strong>24</strong>
-                </article>
-                <article class="stat-card">
-                    <span class="stat-label">Active</span>
-                    <strong>18</strong>
-                </article>
-                <article class="stat-card">
-                    <span class="stat-label">Pending</span>
-                    <strong>6</strong>
-                </article>
+                <!-- Render Data from js -->
             </section>
 
             <section class="table-panel" aria-labelledby="users-title">
@@ -82,7 +70,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table">
                             <tr>
                                 <td data-label="ID">001</td>
                                 <td data-label="Name">
@@ -174,5 +162,6 @@
             </div>
         </form>
     </div>
+    <script type="module" src="./js/index.js"></script>
 </body>
 </html>

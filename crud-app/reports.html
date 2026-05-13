@@ -28,8 +28,6 @@
                 <a class="active" href="reports.html">Reports</a>
                 <a href="settings.html">Settings</a>
             </nav>
-
-            <a class="sidebar-add" href="#add-user-modal">Add User</a>
         </aside>
 
         <main class="app-shell">
@@ -43,18 +41,7 @@
             </header>
 
             <section class="stats-grid" aria-label="Report summary">
-                <article class="stat-card">
-                    <span class="stat-label">New This Week</span>
-                    <strong>8</strong>
-                </article>
-                <article class="stat-card">
-                    <span class="stat-label">Updated Records</span>
-                    <strong>15</strong>
-                </article>
-                <article class="stat-card">
-                    <span class="stat-label">Deleted Records</span>
-                    <strong>3</strong>
-                </article>
+                <!-- Stats will be dynamically inserted here -->
             </section>
 
             <section class="report-grid">
@@ -113,7 +100,7 @@
                                 <th>Result</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="crud-activity-list">
                             <tr>
                                 <td data-label="Date">Apr 29</td>
                                 <td data-label="Action">Create</td>
@@ -172,5 +159,6 @@
             </div>
         </form>
     </div>
+    <script type="module" src="js/reports.js"></script>
 </body>
 </html>

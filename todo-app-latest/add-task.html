@@ -15,7 +15,7 @@
       <header class="top-nav">
         <a href="index.html">Cancel</a>
         <h2>Add New Task</h2>
-        <a href="index.html">Save</a>
+        <a class="saveTask" href="index.html">Save</a>
       </header>
 
       <form class="form-ui">
@@ -33,14 +33,18 @@
           <span class="blue">▣</span><span class="green">▣</span><span class="orange">▣</span><span class="purple">▣</span><span class="pink">▣</span>
         </div>
       </form>
-
-      <div class="keyboard">
-        <div>Q W E R T Y U I O P</div>
-        <div>A S D F G H J K L</div>
-        <div>⇧ Z X C V B N M ⌫</div>
-        <div><span>123</span><strong>space</strong><span>return</span></div>
-      </div>
     </section>
   </main>
+  <script>
+    const saveAddTaskBtn = document.querySelector('.saveTask')
+    saveAddTaskBtn.addEventListener('click', addTask);
+
+    function addTask(){
+      
+      setTimeout(()=>{
+        alert('2000')
+      },1000)
+    }
+  </script>
 </body>
 </html>

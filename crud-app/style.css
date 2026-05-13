@@ -34,7 +34,9 @@ body {
         radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 32rem),
         linear-gradient(135deg, #f8fbff 0%, var(--bg) 48%, #eef7f2 100%);
 }
-
+body.modal-open {
+    overflow: hidden;
+}
 button,
 input,
 select {
@@ -185,7 +187,7 @@ button:hover,
     margin-bottom: 22px;
     padding: 34px;
     border: 1px solid rgba(255, 255, 255, 0.72);
-    border-radius: 20px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.9);
     box-shadow: var(--shadow);
 }
@@ -269,7 +271,7 @@ h2 {
 .settings-card,
 .modal-card {
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.92);
     box-shadow: 0 16px 40px rgba(23, 32, 51, 0.08);
 }
@@ -495,7 +497,21 @@ select:focus {
 .table-tools {
     display: flex;
     gap: 10px;
-    width: min(380px, 100%);
+    width: min(600px, 100%);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-tools select {
+    width: auto;
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+.table-tools input[type="search"] {
+    width: 300px;
+    min-height: 38px;
+    flex-shrink: 0;
 }
 
 .table-tools button,
@@ -565,7 +581,7 @@ td {
     height: 52px;
     font-size: 0.95rem;
 }
-
+.role, 
 .status {
     display: inline-flex;
     align-items: center;
@@ -614,8 +630,10 @@ td {
     justify-content: center;
     padding: 24px;
 }
-
 .modal:target {
+    display: flex;
+}
+.modal.active{
     display: flex;
 }
 

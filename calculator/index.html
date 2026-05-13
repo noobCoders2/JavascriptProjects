@@ -1,51 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calculator UI</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="phone">
-    <section class="calculator" aria-label="Calculator interface">
-      <div class="display">
-        <div class="display-icons" aria-hidden="true">
-          <span class="history-icon">&#8634;</span>
-          <span class="menu-icon">&#8942;</span>
-        </div>
-        <div class="screen-value" id="display">0</div>
+  <main class="calculator-app">
+    <section class="calculator-card">
+      <div class="calculator-header">
+        <h1>Calculator</h1>
+        <p>HTML + CSS design</p>
       </div>
 
-      <div class="grabber" aria-hidden="true"></div>
+      <div class="display-panel">
+        <div class="memory-label">M</div>
+        <div class="display-value">0</div>
+      </div>
 
-      <div class="keys">
-        <button type="button" class="key utility" data-action="clear">AC</button>
-        <button type="button" class="key utility" data-action="sign">+/-</button>
-        <button type="button" class="key utility" data-action="percent">%</button>
-        <button type="button" class="key operator" data-action="operator" data-operator="/">&divide;</button>
+      <div class="button-grid">
+        <button class="button light">MC</button>
+        <button class="button light">MR</button>
+        <button class="button light">M+</button>
+        <button class="button light">M-</button>
 
-        <button type="button" class="key" data-number="7">7</button>
-        <button type="button" class="key" data-number="8">8</button>
-        <button type="button" class="key" data-number="9">9</button>
-        <button type="button" class="key operator" data-action="operator" data-operator="*">&times;</button>
+        <button class="button dark">7</button>
+        <button class="button dark">8</button>
+        <button class="button dark">9</button>
+        <button class="button accent">÷</button>
 
-        <button type="button" class="key" data-number="4">4</button>
-        <button type="button" class="key" data-number="5">5</button>
-        <button type="button" class="key" data-number="6">6</button>
-        <button type="button" class="key operator" data-action="operator" data-operator="-">&minus;</button>
+        <button class="button dark">4</button>
+        <button class="button dark">5</button>
+        <button class="button dark">6</button>
+        <button class="button accent">×</button>
 
-        <button type="button" class="key" data-number="1">1</button>
-        <button type="button" class="key" data-number="2">2</button>
-        <button type="button" class="key" data-number="3">3</button>
-        <button type="button" class="key operator" data-action="operator" data-operator="+">+</button>
+        <button class="button dark">1</button>
+        <button class="button dark">2</button>
+        <button class="button dark">3</button>
+        <button class="button accent">-</button>
 
-        <button type="button" class="key zero" data-number="0">0</button>
-        <button type="button" class="key" data-action="decimal">.</button>
-        <button type="button" class="key operator" data-action="equals">=</button>
+        <button class="button dark">0</button>
+        <button class="button dark">.</button>
+        <button class="button accent">=</button>
+        <button class="button accent">+</button>
       </div>
     </section>
   </main>
-  <script src="script.js"></script>
+
+  <script>
+    const buttons = document.querySelectorAll('button'),
+          displayValue = document.querySelector('.display-value'),
+          memoryLabel = document.querySelector('.memory-label');
+    let memory = 0;
+
+    buttons.forEach(button=>{
+      button.addEventListener('click', () =>{
+        let btnContent = button.textContent;
+
+        if(btnContent === 'MC'){
+          memory = 0;
+          memoryLabel.style.visibility = 'hidden';
+          clearResult();
+        }else if(btnContent === "="){
+          calculateResult();
+        }else if(btnContent === 'MR'){
+          displayValue.textContent = memory;
+          memoryLabel.style.visibility = memory !== 0 ? 'visible' : 'hidden';
+        }else if(btnContent === "M+"){
+          let value = Number(
+          displayValue.textContent
+            .replace(/×/g, '*')
+            .replace(/÷/g, '/')
+        );
+
+        memory += value;
+        memoryLabel.style.visibility = 'visible';
+        }else if(btnContent === "M-"){
+                  let value = Number(
+          displayValue.textContent
+            .replace(/×/g, '*')
+            .replace(/÷/g, '/')
+        );
+          memory -= value;
+          memoryLabel.style.visibility = memory === 0 ? 'hidden' : 'visible';
+        }else{
+          appendContent(btnContent);
+        }
+
+
+        
+      })
+    })
+
+
+    function clearResult() {
+      displayValue.textContent = 0;
+    }
+
+    function calculateResult() {
+      try {
+        let fixed = displayValue.textContent
+          .replace(/×/g, '*')
+          .replace(/÷/g, '/');
+
+        displayValue.textContent = eval(fixed);
+
+      } catch (error) {
+        alert("Sorry, something went wrong");
+      }
+    }
+
+    function appendContent(btnContent){
+
+      let operators = ['+', '-', '×', '÷'];
+      let lastChar = displayValue.textContent.slice(-1);
+
+      if(operators.includes(btnContent) && operators.includes(lastChar)){
+        displayValue.textContent = displayValue.textContent.slice(0, -1) + btnContent;
+        return;
+      }
+
+      if(displayValue.textContent === '0' || displayValue.textContent === 0){
+        displayValue.textContent = btnContent;
+      }else{
+        displayValue.textContent += btnContent
+      }
+    }
+
+    console.log(buttons)
+  </script>
 </body>
 </html>
